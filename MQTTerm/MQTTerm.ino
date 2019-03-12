@@ -93,13 +93,15 @@ void publish_temp(float temp) {
     int power_voltage = ESP.getVcc();
     log(web_time);
     log(power_voltage);
-    
+
     String json = "{\"datetime\":\"" + web_time + 
                     "\", \"voltage\":\"" + String(power_voltage) +
                     "\", \"thermometer\":\"" + TERMOW_NAME +
                     "\", \"temperature\":\"" + 
                     String(temp) + "\"}";
+    
     mqtt_client.publish(temp_topic, json);
+    delay(100);
     log("MQTT TEMP message sent....");
 }
 
@@ -110,6 +112,8 @@ void setup() {
     
     Serial.begin(SERIAL_SPEED);
     delay(100);    
+    log();
+    log("MQTTerm v"VERSION" is ready");
 
     pinMode(BUTTON_CONTROL, INPUT_PULLUP);
     if (digitalRead(BUTTON_CONTROL) == LOW) {

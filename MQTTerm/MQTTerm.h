@@ -29,7 +29,7 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
-#define VERSION 1.1
+#define VERSION "1.1.1"
 
 //----SERIAL CONFIG----
 #define SERIAL_SPEED          115200
@@ -53,13 +53,13 @@
 //----MQTTerm CONFIG----
 #define DS18B20_PIN           5   //data pin for DS18B20 sensor
 #define BUTTON_CONTROL        12  //data pin for the control switch
-#define DEBUG                 1   //1=enable DEBUG mode; 0=disble debug mode
+#define DEBUG                 0   //1=enable DEBUG mode; 0=disble debug mode
 #define DELAY_TEMP_READS      250 //delay between consecutive reads
 #define NUM_TEMP_READS        3   //number of temperature read - mean value will be calculated
 #define NUM_TEMP_DUMMY_READS  2   //number of initial temp read which will be discarded
 #define MQTTERM_MODE_SINGLE    0
 #define MQTTERM_MODE_CONTINUE  1
-#define MQTTERM_SINGLE_DELAY   10 //number of seconds to deep sleep in SINGLE mode
+#define MQTTERM_SINGLE_DELAY   900 //number of seconds to deep sleep in SINGLE mode
 #define MQTTERM_CONTINUE_DELAY 5  //number of seconds between temp read in CONTINUOS mode
 
 #define log(mex) do {if (DEBUG) {Serial.println(mex);Serial.flush();}} while(0)
