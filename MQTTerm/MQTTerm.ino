@@ -6,7 +6,7 @@
 #
 # Date created      : 2019-03-11
 #
-# Version           : 1.0
+# Version           : 1.1
 #
 # Purpose           : Main Sketch file
 #
@@ -14,6 +14,7 @@
 #
 # Date        Author      Version    Changes
 # 2019-03-11  anmancus      1.0      Initial version
+# 2019-03-12  anmancus      1.2      Add power voltage reporting
 #
 ##########################################################################
 */
@@ -28,6 +29,7 @@ PubSubClient      mqtt_client(wifi_client, MQTT_SERVER, MQTT_BROKER_PORT);
 bool              mqtt_status;
 byte              termow_mode = MQTTERM_MODE_SINGLE;
 String            temp_topic;
+ADC_MODE(ADC_VCC); 
 
 //Wifi Initialization function
 int WiFi_init()
@@ -88,9 +90,12 @@ float avg_temp_read() {
 
 void publish_temp(float temp) {
     String web_time = get_web_time();
+    int power_voltage = ESP.getVcc();
     log(web_time);
+    log(power_voltage);
     
     String json = "{\"datetime\":\"" + web_time + 
+                    "\", \"voltage\":\"" + String(power_voltage) +
                     "\", \"thermometer\":\"" + TERMOW_NAME +
                     "\", \"temperature\":\"" + 
                     String(temp) + "\"}";
@@ -104,7 +109,7 @@ void setup() {
     float temperature;
     
     Serial.begin(SERIAL_SPEED);
-    delay(100);
+    delay(100);    
 
     pinMode(BUTTON_CONTROL, INPUT_PULLUP);
     if (digitalRead(BUTTON_CONTROL) == LOW) {

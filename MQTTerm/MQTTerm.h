@@ -6,7 +6,7 @@
 #
 # Date created      : 2019-03-11
 #
-# Version           : 1.0
+# Version           : 1.1
 #
 # Purpose           : Main header file
 #
@@ -14,6 +14,7 @@
 #
 # Date        Author      Version    Changes
 # 2019-03-11  anmancus      1.0      Initial version
+# 2019-03-12  anmancus      1.1      Add version number
 #
 ##########################################################################
 */
@@ -27,6 +28,8 @@
 #include <PubSubClient.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+
+#define VERSION 1.1
 
 //----SERIAL CONFIG----
 #define SERIAL_SPEED          115200
