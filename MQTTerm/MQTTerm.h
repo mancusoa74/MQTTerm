@@ -22,12 +22,12 @@
 #ifndef TERMOMETROW_H
 #define TERMOMETROW_H
 
-#include <WiFiClient.h>
-#include <ESP8266WiFi.h>
-#include <MQTT.h>
-#include <PubSubClient.h>
-#include <OneWire.h>
-#include <DallasTemperature.h>
+#include <WiFiClient.h>        //version 1.2
+#include <ESP8266WiFi.h>       //version 1.2
+#include <MQTT.h>              //version 1.99.0
+#include <PubSubClient.h>      //version 1.99.0
+#include <OneWire.h>           //version 2.3.4
+#include <DallasTemperature.h> //version 3.8.0
 
 #define VERSION "1.1.1"
 
